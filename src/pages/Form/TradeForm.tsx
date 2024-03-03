@@ -1,7 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
+import MetaMaskConnect from './MetaMaskConnect';
 import axios from 'axios';
 
 const TradingDashboard: React.FC = () => {
+  // Function to handle MetaMask connection
+  const handleConnect = (account: string) => {
+    console.log('Connected to MetaMask:', account);
+    // You can perform any additional actions here upon successful connection
+  };
+
+  // Function to handle MetaMask disconnection
+  const handleDisconnect = () => {
+    console.log('Disconnected from MetaMask');
+    // You can perform any additional actions here upon disconnection
+  };
+
   // State for the bot form
   const [symbol, setSymbol] = useState<string>('');
   const [volume, setVolume] = useState<number>(0);
@@ -16,8 +29,9 @@ const TradingDashboard: React.FC = () => {
   const [message, setMessage] = useState<string>('');
 
   // State for live cryptocurrency prices
-  const [cryptoPrices, setCryptoPrices] = useState<any[]>([]);
+  //const [cryptoPrices, setCryptoPrices] = useState<any[]>([]);
 
+  {/* 
   // Fetch live cryptocurrency prices on component mount
   useEffect(() => {
     const fetchCryptoPrices = async () => {
@@ -30,6 +44,7 @@ const TradingDashboard: React.FC = () => {
     };
     fetchCryptoPrices();
   }, []);
+*/}
 
   // Function to handle bot form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -64,7 +79,9 @@ const TradingDashboard: React.FC = () => {
         <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
           <h1 className="text-3xl font-bold mb-4">AlphaTrader Bot</h1>
           <h2 className="text-3xl font-bold mb-4"> FX-MetaTrader 4/5 </h2>
-        
+           {/* Bot Form */}
+          <MetaMaskConnect onConnect={handleConnect} onDisconnect={handleDisconnect} />
+
           {message && (
             <div className="text-center text-sm text-green-600 mb-4">
               {message}
@@ -200,7 +217,7 @@ const TradingDashboard: React.FC = () => {
         </div>
       </div>
       
-      {/* Live Cryptocurrency Prices */}
+      {/* Live Cryptocurrency Prices 
       <div>
         <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
           
@@ -214,14 +231,17 @@ const TradingDashboard: React.FC = () => {
           </ul>
         </div>
       </div>
+      */}
       
-      {/* Live Trading Graph */}
+      {/* Live Trading Graph
       <div>
         <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
         <h1 className="text-3xl font-bold mb-4">Live Cryptocurrency Prices</h1>
-          {/* Add live trading graph here */}
+           Add live trading graph here *
         </div>
       </div>
+            */}
+
     </div>
   );
 };
