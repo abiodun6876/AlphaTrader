@@ -78,7 +78,7 @@ const TradingDashboard: React.FC = () => {
       <div>
         <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
           <h1 className="text-3xl font-bold mb-4">AlphaTrader Bot</h1>
-          <h2 className="text-3xl font-bold mb-4"> FX-MetaTrader 4/5 </h2>
+          <h2 className="text-3xl font-bold mb-4"> FX and MetaTrader 4/5 </h2>
            {/* Bot Form */}
           <MetaMaskConnect onConnect={handleConnect} onDisconnect={handleDisconnect} />
 
